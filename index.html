@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="Тест на знання рангу війсковослужбовця Збройних Сил України" />
+<meta name="author" content="Bawyka Taras" />
+<link href="favicon.ico" rel="icon" type="image/x-icon" />
+<script type="text/javascript">
+
+var start = function() {
+	var i, you,
+		ranks = [
+			['starshysoldat', 'Старший Солдат'],
+			['molodshyserjant','Молодший Сержант'],
+			['serjant','Сержант'],
+			['starshyserjant','Старший Сержант'],
+			['starshyna','Старшина'],
+			['praporshyk','Прапорщик'],
+			['starshypraporshyk','Старший Прапорщик'],
+			['molodshylejtynant','Молодший Лейтинант'],
+			['lejtynant','Лейтинант'],
+			['starshylejtynant','Старший Лейтинант'],
+			['capitan','Капітан'],
+			['major','Майор'],
+			['pidpolkownyk','Підповковник'],
+			['polkownyk','Повковник'],
+			['general_major','Генерал Майор'],
+			['general_lejtynant','Генерал Лейтинант'],
+			['general_polkownyk','Генерал Повковник'],
+			['general_armyi_ukraine','Генерал Армії України']
+		];
+		
+	$ranks = ranks.slice();
+		
+	var zwannya = document.getElementById('zwannya');
+		
+	function general()
+	{	
+		i = 0; you = 0;
+		
+		document.getElementById('num').innerText = 1;
+		
+		// Your Rank is Soldier
+		document.getElementById('you').innerText = 'Солдат';
+		document.getElementById('shrnk').style.display = 'none';
+		document.getElementById('shrnk').alt = 'st.soldier';
+		document.getElementById('shrnk').title = 'Старший Солдат';
+		document.getElementById('shrnk').src = 'img/starshysoldat.png';
+		
+		shuffle($ranks);
+
+		// Initial Rank
+		zwannya.src = 'img/'+$ranks[i][0]+'.png';
+		zwannya.alt = $ranks[i][1];
+		
+		shf_ranks = $ranks;
+		
+		answers = [ shf_ranks[0], shf_ranks[1], shf_ranks[2], shf_ranks[3] ];
+		shuffle(answers);
+			
+		// Initial Answers
+		document.getElementById('r1').innerText = answers[0][1];
+		document.getElementById('r2').innerText = answers[1][1];
+		document.getElementById('r3').innerText = answers[2][1];
+		document.getElementById('r4').innerText = answers[3][1];
+		
+		document.forms['answers'].elements['pogon'][0].value=answers[0][1];
+		document.forms['answers'].elements['pogon'][1].value=answers[1][1];
+		document.forms['answers'].elements['pogon'][2].value=answers[2][1];
+		document.forms['answers'].elements['pogon'][3].value=answers[3][1];
+	}
+	
+	// Game Begin
+	general();
+	
+	var gerb = document.getElementById('gerb');
+	
+	gerb.onclick = function(){
+		// New Game
+		general();
+	}
+		
+	var rb = document.forms['answers'].elements['pogon'];
+	
+	for (var m = 0; m<rb.length; m++){
+		rb[m].onclick = function(){
+		
+			this.checked = false;
+												
+			i++;
+			
+			if (i==ranks.length) {
+				
+				you--;
+				
+				alert('Ви отримали звання "'+ranks[you][1]+'"');
+			
+				general();
+			}
+									
+			if (this.value==zwannya.alt) {
+							
+				document.getElementById('shrnk').src = 'img/'+ranks[you][0]+'.png';
+				document.getElementById('you').innerText = ranks[you][1];
+				
+				you++;
+			
+				document.getElementById('shrnk').style.display='inline';
+			}
+						
+			zwannya.src = 'img/'+$ranks[i][0]+'.png';
+			zwannya.alt = $ranks[i][1];
+		
+			// forming 4 answers
+			var new_ranks = $ranks.slice();
+			new_ranks.splice(i,1);
+			shuffle(new_ranks);
+			arr = [$ranks[i],new_ranks[0],new_ranks[1],new_ranks[2]];
+			shuffle(arr);
+			
+			// Initial Answers
+			document.getElementById('r1').innerText = arr[0][1];
+			document.getElementById('r2').innerText = arr[1][1];
+			document.getElementById('r3').innerText = arr[2][1];
+			document.getElementById('r4').innerText = arr[3][1];
+			
+			document.forms['answers'].elements['pogon'][0].value=arr[0][1];
+			document.forms['answers'].elements['pogon'][1].value=arr[1][1];
+			document.forms['answers'].elements['pogon'][2].value=arr[2][1];
+			document.forms['answers'].elements['pogon'][3].value=arr[3][1];
+			
+			document.getElementById('num').innerText = (i+1);
+			console.log(i);
+		}
+	}
+	
+	//+ Jonas Raoni Soares Silva
+	//@ http://jsfromhell.com/array/shuffle [v1.0]
+	function shuffle(o){ //v1.0
+		for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+		return o;
+	};
+}
+</script>
+<title> Стань Гереалом </title>
+<style>
+input[type="radio"] { cursor: pointer; }
+</style>
+</head>
+<body onload="start()">
+<div id="herb" style="text-align:center">
+	<img src="img/ukraine gerb.png" alt="gerb" id="gerb" width="70" height="100" title="ukraine_gerb" />
+</div>
+<div style="text-align:center"><label id="num">1</label></div>
+<div id="pogon" style="text-align:center; margin: 2px; padding: 4px;">
+    <img id="zwannya" src="img/starshysoldat.png" alt="init" />
+</div>
+<div style="text-align:center;">
+<form name="answers">
+    <table style="margin: 0 auto; width: 300px;">
+        <tr>
+            <td width="20" style="padding-left: 80px;"><input type="radio" name="pogon" value="Генерал Лейтинант" /></td><td align="left"><div id="r1">Генерал Лейтинант</div></td>
+        </tr>
+        <tr>
+            <td width="20" style="padding-left: 80px;"><input type="radio" name="pogon" value="Майор" /></td><td align="left"><div id="r2">Майор</div></td>
+        </tr>
+        <tr>
+            <td width="20" style="padding-left: 80px;"><input type="radio" name="pogon" value="Прапорщик" /></td><td align="left"><div id="r3">Прапорщик</div></td>
+        </tr>
+        <tr>
+            <td width="20" style="padding-left: 80px;"><input type="radio" name="pogon" value="Підповконик" /></td><td align="left"><div id="r4">Підповковник</div></td>
+        </tr>
+    </table>
+</form>
+</div>
+<div id="rankblock" style="text-align:center; margin: 10px;">
+	<b>Ваше звання</b>
+	<div style="padding: 4px">
+		<img src="img/starshysoldat.png" alt="st.soldier" title="Старший Солдат" id="shrnk" style="display:none">
+		<div id="you">Солдат</div>
+	</div>
+</div>
+</body>
+</html>
