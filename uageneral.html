@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="Ukrainian Military Soldiers Ranks Knowledge Test" />
+<meta name="author" content="Bawyka Taras" />
+<link href="favicon.ico" rel="icon" type="image/x-icon" />
+<link href="public/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="public/js/site.js"></script>
+<title> General of Ukraine Army </title>
+</head>
+<body>
+<div class="wrapper">
+
+	<div id="currentrank" style="margin: 10px;">
+		<div style="width: 115px;">&nbsp;
+			<img src="img/starshysoldat.png" alt="st.soldier" class="rng left" title="Старший Солдат" style="display:none">
+		</div>
+		<div class="gerb">
+			<img src="img/ukraine gerb.png" alt="gerb" id="gerb" width="70" height="81" title="ukraine_gerb" />
+		</div>		
+		<div style="width: 115px;">
+			<img src="img/starshysoldat.png" alt="st.soldier" class="rng right" title="Старший Солдат" style="display:none">&nbsp;
+		</div>
+	</div>
+	
+	<div class="block">
+		<div style="text-align:center;">
+			<label style="text-decoration: underline; margin: 5px 5px 5px 0; display: block;" id="num">1</label>
+		</div>
+		
+		<div id="pogon" style="text-align:center; margin: 2px; padding: 4px;">
+			<img id="zwannya" src="img/starshysoldat.png" alt="init" width="200" />
+		</div>
+	</div>
+	
+	<div class="container">
+		<div style="text-align:center;">
+			<form action="" name="answers">
+				<fieldset>
+					<legend id="start">wählen Sie die Antwort</legend>
+					<ul class="checklist">
+						<li>
+							<input name="rang" value="value1" type="radio" id="choice_a"/>
+							<label for="choice_a">Soldat</label>
+							<a class="checkbox-select" href="#">Select</a>
+							<a class="checkbox-deselect" href="#">Ok</a>
+						</li>
+						<li>
+							<input name="rang" value="value2" type="radio" id="choice_b"/>
+							<label for="choice_b">General</label>
+							<a class="checkbox-select" href="#">Select</a>
+							<a class="checkbox-deselect" href="#">Ok</a>
+						</li>
+						<li>
+							<input name="rang" value="value3" type="radio" id="choice_c"/>
+							<label for="choice_c">Major</label>
+							<a class="checkbox-select" href="#">Select</a>
+							<a class="checkbox-deselect" href="#">Ok</a>
+						</li>
+						<li>
+							<input name="rang" value="value4" type="radio" id="choice_d"/>
+							<label for="choice_d">Serjant</label>
+							<a class="checkbox-select" href="#">Select</a>
+							<a class="checkbox-deselect" href="#">Ok</a>
+						</li>
+					</ul>
+					<div style="clear: both;"></div>
+					<!--<input class="sendit" type="submit" style="background-image:none" name="submitbutton" title="Submit the form" value="next">-->
+				</fieldset>
+			</form>
+			
+			<div id="rankblock" style="text-align:center; margin: 10px;">
+				<b>Ihr Rang</b>
+				<div>
+					<img src="img/starshysoldat.png" alt="st.soldier" title="Старший Солдат" id="shrnk" style="display:none">
+					<div id="you">Soldat</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+	
+</body>
+</html>
