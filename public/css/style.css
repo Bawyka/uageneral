@@ -112,6 +112,13 @@ a.checkbox-deselect {
 
 .block { width: 100%; float: left; }
 
+#pogon {
+	 text-align:center; 
+	 margin: 2px; padding: 4px;
+	 height: 82px;
+	 display: block;
+}
+
 .container {
 	text-align: center;
 }
